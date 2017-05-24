@@ -14,6 +14,6 @@ public interface Api {
     Call<ApiShortLink> createShortLink(@Body ApiShortLink request);
     @GET("v1/shortlinks")
     Call<List<ApiShortLink>> getShortLinks();
-    @GET("{slug}")
+    @GET("v1/{slug}")
     Call<ApiShortLink> getDestination(@Path("slug") String slug);
 }
