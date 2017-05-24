@@ -1,9 +1,8 @@
 package mx.jovannypcg.shortener.home;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import mx.jovannypcg.shortener.BuildConfig;
 import mx.jovannypcg.shortener.R;
 
 public class HomeActivity extends AppCompatActivity implements HomeView {
@@ -34,8 +32,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
         progressDialog = new ProgressDialog(this);
         homePresenter = new HomePresenterImpl(this);
-
-        Log.i("*=*=*=*=*=*=*=*=", BuildConfig.API_HOST);
     }
 
     @OnClick(R.id.btn_shorten)

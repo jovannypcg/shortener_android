@@ -11,6 +11,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Contains the logic to deal with short links in HomeActivity.
+ *
+ * @author  Jovanny Pablo Cruz Gomez
+ *          Software Engineer
+ *          jovannypcg@yahoo.com
+ */
 public class HomePresenterImpl implements HomePresenter {
     private HomeView homeView;
     private Api api;
@@ -58,6 +65,13 @@ public class HomePresenterImpl implements HomePresenter {
         });
     }
 
+    /**
+     * Gets the full shorter link based on the API URL and the slug sent
+     * as argument.
+     *
+     * @param slug Slug for the full link.
+     * @return Full shorter link.
+     */
     private String getFullShortLink(String slug) {
         return BuildConfig.API_HOST.concat(slug);
     }
