@@ -47,8 +47,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     }
 
     @Override
-    public void showDestinationEmptyError() {
-        etDestination.setError(getResources().getString(R.string.enter_url));
+    public void showDestinationError(String message) {
+        etDestination.setError(message);
     }
 
     @Override

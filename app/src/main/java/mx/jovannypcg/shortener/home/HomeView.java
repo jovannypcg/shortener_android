@@ -31,9 +31,9 @@ public interface HomeView {
 
     /**
      * Displays an error message in the edit text for the destination when
-     * the user attempts to submit an empty string.
+     * the user attempts to submit an invalid string (url).
      */
-    void showDestinationEmptyError();
+    void showDestinationError(String message);
 
     /**
      * By default the layout which contains the text view that shows the shorter link

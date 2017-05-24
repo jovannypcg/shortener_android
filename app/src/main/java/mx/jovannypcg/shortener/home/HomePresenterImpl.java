@@ -7,6 +7,7 @@ import mx.jovannypcg.shortener.R;
 import mx.jovannypcg.shortener.rest.Api;
 import mx.jovannypcg.shortener.rest.ApiClient;
 import mx.jovannypcg.shortener.rest.model.ApiShortLink;
+import mx.jovannypcg.shortener.util.URL;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,8 +31,8 @@ public class HomePresenterImpl implements HomePresenter {
 
     @Override
     public void submitShorten() {
-        if (homeView.getDestination().isEmpty()) {
-            homeView.showDestinationEmptyError();
+        if (!URL.isValid(homeView.getDestination())) {
+            homeView.showDestinationError(homeView.getResources().getString(R.string.enter_a_valid_url));
             return;
         }
 

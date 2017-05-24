@@ -13,10 +13,10 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField("String", "API_HOST", '"http://192.168.136.216:3000/"')
+            buildConfigField("String", "API_HOST", '"http://192.168.136.106:3000/"')
         }
         release {
-            buildConfigField("String", "API_HOST", '"http://192.168.136.216:3000/"')
+            buildConfigField("String", "API_HOST", '"http://192.168.136.106:3000/"')
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
