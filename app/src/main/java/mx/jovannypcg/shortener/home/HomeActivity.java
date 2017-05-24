@@ -1,5 +1,6 @@
 package mx.jovannypcg.shortener.home;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,17 +20,57 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @BindView(R.id.et_destination) EditText etDestination;
     @BindView(R.id.tv_short_link) TextView tvShortLink;
 
+    private ProgressDialog progressDialog;
+    private HomePresenter homePresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         ButterKnife.bind(this);
+
+        progressDialog = new ProgressDialog(this);
+        homePresenter = new HomePresenterImpl(this);
     }
 
     @OnClick(R.id.btn_shorten)
     public void submitShorten() {
-        this.showMessage("shorten");
+        homePresenter.submitShorten();
+    }
+
+    @Override
+    public String getDestination() {
+        return etDestination.getText().toString();
+    }
+
+    @Override
+    public void showDestinationEmptyError() {
+        etDestination.setError(getResources().getString(R.string.enter_url));
+    }
+
+    @Override
+    public void setShorterLink(String shorterLink) {
+        tvShortLink.setText(shorterLink);
+    }
+
+    @Override
+    public void setShorterLinkLayoutVisibility(int visibility) {
+        shortLinkLayout.setVisibility(visibility);
+    }
+
+    @Override
+    public void showProgress() {
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage(getResources().getString(R.string.shortening));
+        progressDialog.show();
+    }
+
+    @Override
+    public void dismissProgress() {
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 
     @Override

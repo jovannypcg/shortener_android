@@ -1,5 +1,5 @@
 package mx.jovannypcg.shortener.home;
 
-public class HomePresenter {
-
+public interface HomePresenter {
+    void submitShorten();
 }
