@@ -9,6 +9,13 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
+/**
+ * Specifies the API endpoint to request short links.
+ *
+ * @author  Jovanny Pablo Cruz Gomez
+ *          Software Engineer
+ *          jovannypcg@yahoo.com
+ */
 public interface Api {
     @POST("v1/shortlinks")
     Call<ApiShortLink> createShortLink(@Body ApiShortLink request);

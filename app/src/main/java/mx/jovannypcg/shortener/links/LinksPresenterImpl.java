@@ -1,8 +1,5 @@
 package mx.jovannypcg.shortener.links;
 
-import android.telecom.Call;
-import android.util.Log;
-
 import java.util.List;
 
 import mx.jovannypcg.shortener.BuildConfig;
@@ -13,6 +10,13 @@ import mx.jovannypcg.shortener.rest.model.ApiShortLink;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Contains the logic to deal with short links in LinksActivity.
+ *
+ * @author  Jovanny Pablo Cruz Gomez
+ *          Software Engineer
+ *          jovannypcg@yahoo.com
+ */
 public class LinksPresenterImpl implements LinksPresenter {
     private LinksView view;
     private Api api;

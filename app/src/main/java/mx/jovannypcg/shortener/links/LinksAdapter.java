@@ -15,6 +15,13 @@ import butterknife.ButterKnife;
 import mx.jovannypcg.shortener.R;
 import mx.jovannypcg.shortener.rest.model.ApiShortLink;
 
+/**
+ * Adapter for the list view in LinksActivity.
+ *
+ * @author  Jovanny Pablo Cruz Gomez
+ *          Software Engineer
+ *          jovannypcg@yahoo.com
+ */
 public class LinksAdapter extends BaseAdapter {
     private List<ApiShortLink> links;
     private Context context;
@@ -65,6 +72,9 @@ public class LinksAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * To use view-holder pattern.
+     */
     static class ViewHolder {
         @BindView(R.id.tv_destination) TextView tvDestination;
 

@@ -2,6 +2,13 @@ package mx.jovannypcg.shortener.rest.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Represents a short link in JSON format.
+ *
+ * @author  Jovanny Pablo Cruz Gomez
+ *          Software Engineer
+ *          jovannypcg@yahoo.com
+ */
 public class ApiShortLink {
     @SerializedName("id")
     private Integer id;

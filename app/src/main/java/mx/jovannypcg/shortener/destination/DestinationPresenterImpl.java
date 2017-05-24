@@ -8,6 +8,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Contains the logic to deal with short links in DestinationActivity.
+ *
+ * @author  Jovanny Pablo Cruz Gomez
+ *          Software Engineer
+ *          jovannypcg@yahoo.com
+ */
 public class DestinationPresenterImpl implements DestinationPresenter {
     private Api api;
     private DestinationView view;
