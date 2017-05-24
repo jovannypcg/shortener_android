@@ -15,17 +15,35 @@
         android:layout_weight="10"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginBottom="@dimen/large_margin"
+        android:textSize="@dimen/small_font_size"
         android:gravity="center_horizontal"
         android:text="@string/app_name"/>
 
-    <TextView
-        android:id="@+id/tv_short_link"
+    <LinearLayout
+        android:id="@+id/layout_short_link"
         android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_weight="80"
-        android:gravity="center"
-        android:textSize="@dimen/medium_font_size"
-        android:text="@string/app_name" />
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_short_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center"
+            android:textSize="@dimen/medium_font_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/small_font_size"
+            android:textStyle="italic"
+            android:textColor="@color/colorAccent"
+            android:layout_marginBottom="@dimen/large_margin"
+            android:text="@string/shorter_link"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_go"
