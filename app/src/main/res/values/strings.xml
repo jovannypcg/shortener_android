@@ -5,4 +5,6 @@
     <string name="shorten">Shorten</string>
     <string name="shortening">Shortening</string>
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="get_links">Get links</string>
+    <string name="retrieving">Retrieving</string>
 </resources>
