@@ -42,25 +42,13 @@ public class LinksPresenterImpl implements LinksPresenter {
     }
 
     @Override
-    public void handleClickedLink(String link) {
-        view.navigateToWebBrowser(link);
+    public void handleClickedSlug(String slug) {
+        view.navigateToDestinationDetail(slug);
     }
 
     public void handleResponse(Response<List<ApiShortLink>> response) {
         List<ApiShortLink> linksFromResponse = response.body();
-
-        String[] links = shorterLinkListToStringArray(linksFromResponse);
-        view.refreshList(links);
-    }
-
-    private String[] shorterLinkListToStringArray(List<ApiShortLink> _links) {
-        String[] links = new String[_links.size()];
-
-        for (int i = 0; i < _links.size(); i++) {
-            links[i] = _links.get(i).getDestination();
-        }
-
-        return links;
+        view.refreshList(linksFromResponse);
     }
 
     /**

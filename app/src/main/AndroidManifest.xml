@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".links.LinksActivity" />
-        <activity android:name=".browser.BrowserActivity"></activity>
+        <activity android:name=".browser.BrowserActivity" />
+        <activity android:name=".destination.DestinationActivity"></activity>
     </application>
 
 </manifest>

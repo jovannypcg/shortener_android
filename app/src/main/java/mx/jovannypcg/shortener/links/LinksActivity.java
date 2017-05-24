@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -15,12 +18,14 @@ import butterknife.OnItemClick;
 import butterknife.OnItemSelected;
 import mx.jovannypcg.shortener.R;
 import mx.jovannypcg.shortener.browser.BrowserActivity;
+import mx.jovannypcg.shortener.destination.DestinationActivity;
+import mx.jovannypcg.shortener.rest.model.ApiShortLink;
 
 public class LinksActivity extends AppCompatActivity implements LinksView {
     @BindView(R.id.lv_links) ListView lvLinks;
 
     private LinksPresenter presenter;
-    private ArrayAdapter<String> linksAdapter;
+    private LinksAdapter linksAdapter;
     private ProgressDialog progressDialog;
 
     @Override
@@ -36,7 +41,8 @@ public class LinksActivity extends AppCompatActivity implements LinksView {
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage(getResources().getString(R.string.retrieving));
 
-        linksAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        List<ApiShortLink> emptyList = new ArrayList<>();
+        linksAdapter = new LinksAdapter(this, emptyList);
         lvLinks.setAdapter(linksAdapter);
     }
 
@@ -46,7 +52,7 @@ public class LinksActivity extends AppCompatActivity implements LinksView {
     }
 
     @Override
-    public void refreshList(String[] items) {
+    public void refreshList(List<ApiShortLink> items) {
         linksAdapter.clear();
         linksAdapter.addAll(items);
         linksAdapter.notifyDataSetChanged();
@@ -54,15 +60,16 @@ public class LinksActivity extends AppCompatActivity implements LinksView {
 
     @OnItemClick(R.id.lv_links)
     public void onItemClick(int position) {
-        presenter.handleClickedLink(linksAdapter.getItem(position));
+        String currentSlug = (String) linksAdapter.getItem(position);
+        presenter.handleClickedSlug(currentSlug);
     }
 
     @Override
-    public void navigateToWebBrowser(String url) {
-        Intent webBrowserIntent = new Intent(this, BrowserActivity.class);
-        webBrowserIntent.putExtra("short_url", url);
+    public void navigateToDestinationDetail(String slug) {
+        Intent destinationDetailIntent = new Intent(this, DestinationActivity.class);
+        destinationDetailIntent.putExtra("slug", slug);
 
-        startActivity(webBrowserIntent);
+        startActivity(destinationDetailIntent);
     }
 
     @Override
