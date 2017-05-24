@@ -1,6 +1,7 @@
 package mx.jovannypcg.shortener.destination;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -9,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mx.jovannypcg.shortener.R;
+import mx.jovannypcg.shortener.browser.BrowserActivity;
 
 public class DestinationActivity extends AppCompatActivity implements DestinationView {
     @BindView(R.id.tv_destination) TextView tvDestination;
@@ -47,6 +49,11 @@ public class DestinationActivity extends AppCompatActivity implements Destinatio
     }
 
     @Override
+    public String getShortLink() {
+        return tvShortLink.getText().toString();
+    }
+
+    @Override
     public void showProgress() {
         progressDialog.show();
     }
@@ -58,6 +65,8 @@ public class DestinationActivity extends AppCompatActivity implements Destinatio
 
     @OnClick(R.id.btn_go)
     public void goToShortLink() {
-
+        Intent webBrowserIntent = new Intent(this, BrowserActivity.class);
+        webBrowserIntent.putExtra("url", this.getShortLink());
+        startActivity(webBrowserIntent);
     }
 }
