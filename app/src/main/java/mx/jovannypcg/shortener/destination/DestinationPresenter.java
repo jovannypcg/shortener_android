@@ -1,4 +1,4 @@
-package mx.jovannypcg.shortener.home;
+package mx.jovannypcg.shortener.destination;
 
 /**
  * Provides the methods which contain the logic to handle HomeActivity.
@@ -7,7 +7,7 @@ package mx.jovannypcg.shortener.home;
  *          Software Engineer
  *          jovannypcg@yahoo.com
  */
-public interface HomePresenter {
-    /** Sends the request to the API and shows the result in the view */
-    void submitShorten();
+public interface DestinationPresenter {
+    /** Hanldes the request to the api related to slug details. */
+    void requestDetails();
 }

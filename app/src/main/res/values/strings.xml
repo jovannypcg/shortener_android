@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Shortener</string>
     <string name="enter_url">Enter URL</string>
+    <string name="enter_a_valid_url">Enter a valid URL</string>
     <string name="shorter_link">Shorter link</string>
     <string name="shorten">Shorten</string>
+    <string name="shortening">Shortening</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="get_links">Get links</string>
+    <string name="retrieving">Retrieving</string>
+    <string name="go">Go</string>
 </resources>
