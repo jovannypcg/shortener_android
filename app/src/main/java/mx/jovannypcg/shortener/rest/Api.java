@@ -10,10 +10,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface Api {
-    @POST("/v1/shorlinks")
+    @POST("v1/shortlinks")
     Call<ApiShortLink> createShortLink(@Body ApiShortLink request);
-    @GET("/v1/shortlinks")
+    @GET("v1/shortlinks")
     Call<List<ApiShortLink>> getShortLinks();
-    @GET("/{slug}")
+    @GET("{slug}")
     Call<ApiShortLink> getDestination(@Path("slug") String slug);
 }

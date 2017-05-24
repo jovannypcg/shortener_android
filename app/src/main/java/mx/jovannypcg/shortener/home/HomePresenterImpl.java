@@ -1,8 +1,8 @@
 package mx.jovannypcg.shortener.home;
 
-import android.util.Log;
 import android.view.View;
 
+import mx.jovannypcg.shortener.BuildConfig;
 import mx.jovannypcg.shortener.R;
 import mx.jovannypcg.shortener.rest.Api;
 import mx.jovannypcg.shortener.rest.ApiClient;
@@ -10,7 +10,6 @@ import mx.jovannypcg.shortener.rest.model.ApiShortLink;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class HomePresenterImpl implements HomePresenter {
     private HomeView homeView;
@@ -33,31 +32,33 @@ public class HomePresenterImpl implements HomePresenter {
         request.setDestination(homeView.getDestination());
 
         homeView.showProgress();
+        homeView.setShorterLinkLayoutVisibility(View.INVISIBLE);
+
         Call<ApiShortLink> createShortLinkCall = api.createShortLink(request);
         createShortLinkCall.enqueue(new Callback<ApiShortLink>() {
             @Override
             public void onResponse(Call<ApiShortLink> call, Response<ApiShortLink> response) {
-                Log.i("***** ", response.body().toString());
-
                 switch (response.code()) {
                     case 200:
-                        Log.i("***** ", response.body().toString());
-
                         homeView.setShorterLinkLayoutVisibility(View.VISIBLE);
-                        homeView.setShorterLink(response.body().getSlug());
-
+                        homeView.setShorterLink(getFullShortLink(response.body().getSlug()));
                         break;
                     default:
                         onFailure(call, new Throwable());
                 }
+
+                homeView.dismissProgress();
             }
 
             @Override
             public void onFailure(Call<ApiShortLink> call, Throwable t) {
-                Log.i("=====", t.toString());
-                homeView.getResources().getString(R.string.something_went_wrong);
+                homeView.showMessage(homeView.getResources().getString(R.string.something_went_wrong));
                 homeView.dismissProgress();
             }
         });
+    }
+
+    private String getFullShortLink(String slug) {
+        return BuildConfig.API_HOST.concat(slug);
     }
 }
