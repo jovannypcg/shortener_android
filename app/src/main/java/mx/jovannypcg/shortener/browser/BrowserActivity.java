@@ -10,6 +10,7 @@ import mx.jovannypcg.shortener.R;
 
 public class BrowserActivity extends AppCompatActivity {
     @BindView(R.id.web_browser) WebView webBrowser;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class BrowserActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        webBrowser.loadUrl("http://www.google.com.mx");
+        url = (String) getIntent().getExtras().get("url");
+        webBrowser.loadUrl(url);
     }
 }
