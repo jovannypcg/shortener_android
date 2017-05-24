@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".links.LinksActivity"></activity>
+        <activity android:name=".links.LinksActivity" />
+        <activity android:name=".browser.BrowserActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package mx.jovannypcg.shortener.links;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -10,7 +11,10 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnItemSelected;
 import mx.jovannypcg.shortener.R;
+import mx.jovannypcg.shortener.browser.BrowserActivity;
 
 public class LinksActivity extends AppCompatActivity implements LinksView {
     @BindView(R.id.lv_links) ListView lvLinks;
@@ -48,6 +52,19 @@ public class LinksActivity extends AppCompatActivity implements LinksView {
         linksAdapter.notifyDataSetChanged();
     }
 
+    @OnItemClick(R.id.lv_links)
+    public void onItemClick(int position) {
+        presenter.handleClickedLink(linksAdapter.getItem(position));
+    }
+
+    @Override
+    public void navigateToWebBrowser(String url) {
+        Intent webBrowserIntent = new Intent(this, BrowserActivity.class);
+        webBrowserIntent.putExtra("short_url", url);
+
+        startActivity(webBrowserIntent);
+    }
+
     @Override
     public void showProgress() {
         progressDialog.show();
@@ -60,6 +77,6 @@ public class LinksActivity extends AppCompatActivity implements LinksView {
 
     @Override
     public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

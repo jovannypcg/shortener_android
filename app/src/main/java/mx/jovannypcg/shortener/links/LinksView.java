@@ -8,4 +8,5 @@ public interface LinksView {
     void dismissProgress();
     void showMessage(String message);
     Resources getResources();
+    void navigateToWebBrowser(String url);
 }

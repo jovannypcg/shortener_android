@@ -41,6 +41,11 @@ public class LinksPresenterImpl implements LinksPresenter {
         });
     }
 
+    @Override
+    public void handleClickedLink(String link) {
+        view.navigateToWebBrowser(link);
+    }
+
     public void handleResponse(Response<List<ApiShortLink>> response) {
         List<ApiShortLink> linksFromResponse = response.body();
 
@@ -52,7 +57,7 @@ public class LinksPresenterImpl implements LinksPresenter {
         String[] links = new String[_links.size()];
 
         for (int i = 0; i < _links.size(); i++) {
-            links[i] = getFullShortLink(_links.get(i).getSlug());
+            links[i] = _links.get(i).getDestination();
         }
 
         return links;
