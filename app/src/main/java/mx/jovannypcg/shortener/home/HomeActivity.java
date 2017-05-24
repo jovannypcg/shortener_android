@@ -1,6 +1,7 @@
 package mx.jovannypcg.shortener.home;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mx.jovannypcg.shortener.R;
+import mx.jovannypcg.shortener.links.LinksActivity;
 
 public class HomeActivity extends AppCompatActivity implements HomeView {
     @BindView(R.id.layout_short_link) LinearLayout shortLinkLayout;
@@ -88,6 +90,9 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_show_links:
+                Intent linksIntent = new Intent(this, LinksActivity.class);
+                startActivity(linksIntent);
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
