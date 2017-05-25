@@ -1,6 +1,11 @@
 package mx.jovannypcg.shortener.destination;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+
 import mx.jovannypcg.shortener.BuildConfig;
+import mx.jovannypcg.shortener.R;
 import mx.jovannypcg.shortener.rest.Api;
 import mx.jovannypcg.shortener.rest.ApiClient;
 import mx.jovannypcg.shortener.rest.model.ApiShortLink;
@@ -42,6 +47,17 @@ public class DestinationPresenterImpl implements DestinationPresenter {
                 view.dismissProgress();
             }
         });
+    }
+
+    @Override
+    public void copyShortLinkToClipboard() {
+        ClipboardManager clipboard =
+                (ClipboardManager) view.getSystemService(Context.CLIPBOARD_SERVICE);
+
+        ClipData clip = ClipData.newPlainText("Copied Text", view.getShortLink());
+        clipboard.setPrimaryClip(clip);
+
+        view.showMessage(view.getResources().getString(R.string.copied_to_clipboard));
     }
 
     /**

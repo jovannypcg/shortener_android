@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,5 +69,15 @@ public class DestinationActivity extends AppCompatActivity implements Destinatio
         Intent webBrowserIntent = new Intent(this, BrowserActivity.class);
         webBrowserIntent.putExtra("url", this.getShortLink());
         startActivity(webBrowserIntent);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.tv_short_link)
+    public void shortLinkClicked() {
+        presenter.copyShortLinkToClipboard();
     }
 }

@@ -10,4 +10,7 @@ package mx.jovannypcg.shortener.destination;
 public interface DestinationPresenter {
     /** Hanldes the request to the api related to slug details. */
     void requestDetails();
+
+    /** Gets the text from the short link text view and copies it to the clipboard */
+    void copyShortLinkToClipboard();
 }

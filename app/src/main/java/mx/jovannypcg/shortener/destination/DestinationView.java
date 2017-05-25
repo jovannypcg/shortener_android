@@ -1,5 +1,7 @@
 package mx.jovannypcg.shortener.destination;
 
+import android.content.res.Resources;
+
 /**
  * Specifies the methods DestinationActivity should implement to
  * be treated as a view.
@@ -15,6 +17,12 @@ public interface DestinationView {
      * @return Value from intent's extra.
      */
     Object getExtra(String key);
+
+    /** Gets a reference to the Resources object, contained in the activity. */
+    Resources getResources();
+
+    /** Gets a system service. */
+    Object getSystemService(String name);
 
     /**
      * Sets text in the text view for destination.
@@ -40,4 +48,10 @@ public interface DestinationView {
 
     /** Dismisses progress dialog. */
     void dismissProgress();
+
+    /**
+     * Shows up a toast message with the given argument.
+     * @param message Message to show up as toast.
+     */
+    void showMessage(String message);
 }
