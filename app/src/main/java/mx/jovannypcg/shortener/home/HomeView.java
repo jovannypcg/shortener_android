@@ -26,8 +26,14 @@ public interface HomeView {
     /** Gets a reference to the Resources object, contained in the activity. */
     Resources getResources();
 
+    /** Gets a system service. */
+    Object getSystemService(String name);
+
     /** Retrieves the text entered by the user from the edit text. */
     String getDestination();
+
+    /** Retrieves the short link from the view. */
+    String getShortLink();
 
     /**
      * Displays an error message in the edit text for the destination when

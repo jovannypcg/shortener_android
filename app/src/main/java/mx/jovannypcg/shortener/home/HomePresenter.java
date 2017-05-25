@@ -10,4 +10,7 @@ package mx.jovannypcg.shortener.home;
 public interface HomePresenter {
     /** Sends the request to the API and shows the result in the view */
     void submitShorten();
+
+    /** Gets the text from the short link text view and copies it to the clipboard */
+    void copyShortLinkToClipboard();
 }

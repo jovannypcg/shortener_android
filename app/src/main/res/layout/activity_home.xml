@@ -15,6 +15,7 @@
         android:layout_height="0sp"
         android:layout_weight="10"
         android:layout_marginTop="@dimen/large_margin"
+        android:inputType="textUri"
         android:hint="@string/enter_url" />
 
     <LinearLayout

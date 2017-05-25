@@ -9,4 +9,5 @@
     <string name="get_links">Get links</string>
     <string name="retrieving">Retrieving</string>
     <string name="go">Go</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
 </resources>

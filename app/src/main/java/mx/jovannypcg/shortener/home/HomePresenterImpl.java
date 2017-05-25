@@ -1,5 +1,8 @@
 package mx.jovannypcg.shortener.home;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.view.View;
 
 import mx.jovannypcg.shortener.BuildConfig;
@@ -64,6 +67,17 @@ public class HomePresenterImpl implements HomePresenter {
                 homeView.dismissProgress();
             }
         });
+    }
+
+    @Override
+    public void copyShortLinkToClipboard() {
+        ClipboardManager clipboard =
+                (ClipboardManager) homeView.getSystemService(Context.CLIPBOARD_SERVICE);
+
+        ClipData clip = ClipData.newPlainText("Copied Text", homeView.getShortLink());
+        clipboard.setPrimaryClip(clip);
+
+        homeView.showMessage(homeView.getResources().getString(R.string.copied_to_clipboard));
     }
 
     /**

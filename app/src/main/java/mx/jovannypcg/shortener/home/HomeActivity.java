@@ -1,11 +1,13 @@
 package mx.jovannypcg.shortener.home;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -44,6 +46,11 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @Override
     public String getDestination() {
         return etDestination.getText().toString();
+    }
+
+    @Override
+    public String getShortLink() {
+        return tvShortLink.getText().toString();
     }
 
     @Override
@@ -97,5 +104,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @OnClick(R.id.tv_short_link)
+    public void shortLinkClicked() {
+        homePresenter.copyShortLinkToClipboard();
     }
 }
